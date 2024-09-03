@@ -10,6 +10,9 @@ const wrap = document.getElementById('wrap');
 const start = document.getElementById('start');
 const count = document.getElementById('count');
 
+// カウント数のHTML要素の取得
+const typecount = document.getElementById('countUp');
+
 
 // 複数のテキストを格納する配列
 const textLists = [
@@ -29,6 +32,7 @@ const textLists = [
   'programming'
 ];
 
+
 // ランダムなテキストを表示
 const createText = () => {
 
@@ -43,8 +47,6 @@ typedfield.textContent =typed;
   untypedfield.textContent =untyped;
 };
 
-
-
 // キー入力の判定
 const keyPress = e  => {
   // 誤タイプの場合
@@ -58,16 +60,17 @@ const keyPress = e  => {
     return;
   }
 
-
-
   // 正タイプの場合
   // スコアのインクリメント
   score++;
 
- typed += untyped.substring(0,1);
- untyped = untyped.substring(1);
+ typed += untyped.charAt(0);
+ untyped = untyped.slice(1);
  typedfield.textContent = typed;
  untypedfield.textContent =untyped;
+
+//  タイピングカウントの更新
+typecount.textContent = score;
 
 //  テキストがなくなったら新しいテキストを表示
 if(untyped === '') {
@@ -141,12 +144,9 @@ timer();
 //課題 タイプ数のカウントアップ
 let countUp = 0;
 document.addEventListener('keydown',function() {
- countUp ++;
-  document.getElementById('countUp').textContent =countUp;
+  typeCount ++;
+  document.getElementById('countUp').textContent = typeCount;
 });
-
-
-
 
 
 untypedfield.textContent ='スタートボタンで開始';
