@@ -102,17 +102,18 @@ return `${score}文字うてました!\n${text}\n 【OK】リトライ / 【キ�
 // ゲームを終了
 const gameOver = id => {
   clearInterval(id);
+
+  // 60秒になったらタイムアップ！を表示
   untypedfield.textContent = 'タイムアップ！';
-
-  setTimeout(resylt,1000);
-
-
+  setTimeout(() => {
+    // スコアをダイヤログで表示
   const result = confirm(rankCheck(score));
-
-  // OKボタンをクリックされたらリロードする
+    // OKボタンをクリックされたらリロードする
   if(result == true) {
     window.location.reload();
-  }
+
+  };
+  },1000,)
 };
 
 
