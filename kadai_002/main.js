@@ -113,7 +113,7 @@ const gameOver = id => {
     window.location.reload();
 
   };
-  },1000,)
+  },10,)
 };
 
 
